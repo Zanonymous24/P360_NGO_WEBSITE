@@ -169,3 +169,7 @@ drafts/
 temp_uploads/
 user_data/
 backups/
+
+SECURITY.md
+.env.example
+config.py
