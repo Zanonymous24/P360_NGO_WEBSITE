@@ -5,6 +5,7 @@ A comprehensive Flask-based website for the Prosperity360 Foundation, showcasing
 ## Features
 
 ### Core Features
+
 - **Responsive Design**: Mobile-first approach with full responsiveness
 - **Dark/Light Theme Toggle**: User preference-based theme switching
 - **Interactive Navigation**: Smooth scrolling and mobile-friendly menu
@@ -13,6 +14,7 @@ A comprehensive Flask-based website for the Prosperity360 Foundation, showcasing
 - **Dynamic Content**: Interactive elements and animations
 
 ### Pages Included
+
 1. **Home** - Landing page with hero section, mission statement, and CTAs
 2. **About Us** - Foundation identity, philosophy, and multi-dimensional framework
 3. **Programs** - Detailed view of 6 strategic pillars and delivery architecture
@@ -21,6 +23,7 @@ A comprehensive Flask-based website for the Prosperity360 Foundation, showcasing
 6. **Contact** - Contact information, regional offices, and FAQ
 
 ### Technical Features
+
 - **Flask Backend**: Python-based web framework
 - **Pure CSS/JS**: No external CSS/JS frameworks (except Font Awesome)
 - **Theme System**: CSS variables for easy theme management
@@ -31,12 +34,11 @@ A comprehensive Flask-based website for the Prosperity360 Foundation, showcasing
 ## Installation & Setup
 
 ### Prerequisites
+
 - Python 3.7+
 - pip (Python package manager)
 
-### Installation Steps
 
-1. **Clone/Download the Project**
-   ```bash
-   git clone <repository-url>
-   cd prosperity360-website
+## Author
+
+AridsWolfgangX 🀄
