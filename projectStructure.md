@@ -16,4 +16,4 @@ prosperity360-website/
 │   ├── impact.html       # Impact page
 │   ├── getinvolved.html  # Get Involved page
 │   └── contact.html      # Contact page
-└── README.md             # This file
+└── README.md             #

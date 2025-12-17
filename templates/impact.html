@@ -4,7 +4,7 @@
 
 {% block content %}
     <!-- Page Header -->
-    <section class="hero" style="padding: 150px 0 80px; background: linear-gradient(rgba(231, 76, 60, 0.9), rgba(241, 196, 15, 0.9));">
+    <section class="impacthero" style="padding: 150px 0 80px; background: linear-gradient(rgba(231, 76, 60, 0.9), rgba(241, 196, 15, 0.9));">
         <div class="container">
             <h1>Our Impact</h1>
             <p class="hero-description">
@@ -367,6 +367,92 @@
 
 {% block head %}
 <style>
+    .impacthero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+        margin: 4rem 0 0 0;
+        padding: 5rem 2rem;
+
+    }
+
+    .impacthero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        animation: zoomIn 20s infinite alternate;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+            url("/static/images/impacthero.jpg") center/cover no-repeat;
+    }
+
+    .impacthero .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+    }
+
+    .impacthero h1 {
+        font-size: 4.2rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: white;
+        animation: slideInDown 1s ease-out;
+    }
+
+
+    .impacthero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        position: relative;
+        display: inline-block;
+        padding: 0 2rem;
+        animation: slideInUp 1s ease-out 0.3s both;
+    }
+
+    .impacthero-subtitle::before,
+    .impacthero-subtitle::after {
+        content: "✦";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: #4fc3f7;
+    }
+
+    .impacthero-subtitle::before {
+        left: 0;
+    }
+
+    .impacthero-subtitle::after {
+        right: 0;
+    }
+
+    .impacthero-description {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border-left: 4px solid #4fc3f7;
+        animation: fadeIn 1s ease-out 0.6s both;
+    }
+
+
     .impact-stats-grid {
         display: flex;
         flex-direction: column;

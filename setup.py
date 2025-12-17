@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="prosperity360-website",
+    name="prosperity360-ngo-website",
     version="1.0.0",
-    description="Prosperity360 Foundation Website",
-    author="Prosperity360 Team",
-    author_email="info@prosperity360.org",
+    description="Prosperity360 Development Initiative",
+    author="Prosperity360-technical-team",
+    author_email="aridswolfgangx@proton.me",
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

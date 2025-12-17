@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Get Involved - Prosperity360 Foundation{% endblock %}
+{% block title %}Get Involved - Prosperity360{% endblock %}
 
 {% block content %}
     <!-- Page Header -->
-    <section class="hero" style="padding: 150px 0 80px; background: linear-gradient(rgba(142, 68, 173, 0.9), rgba(155, 89, 182, 0.9));">
+    <section class="getInvolvedhero" style="padding: 150px 0 80px; background: linear-gradient(rgba(142, 68, 173, 0.9), rgba(155, 89, 182, 0.9));">
         <div class="container">
             <h1>Get Involved</h1>
             <p class="hero-description">
@@ -458,6 +458,90 @@
 
 {% block head %}
 <style>
+    .getInvolvedhero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+        margin: 4rem 0 0 0;
+        padding: 5rem 2rem;
+
+    }
+
+    .getInvolvedhero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        animation: zoomIn 20s infinite alternate;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+            url("/static/images/getInvolved.jpg") center/cover no-repeat;
+    }
+
+    .getInvolvedhero .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+    }
+
+    .getInvolvedhero h1 {
+        font-size: 4.2rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: white;
+        animation: slideInDown 1s ease-out;
+    }
+
+
+    .getInvolvedhero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        position: relative;
+        display: inline-block;
+        padding: 0 2rem;
+        animation: slideInUp 1s ease-out 0.3s both;
+    }
+
+    .getInvolvedhero-subtitle::before,
+    .getInvolvedhero-subtitle::after {
+        content: "✦";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: #4fc3f7;
+    }
+
+    .getInvolvedhero-subtitle::before {
+        left: 0;
+    }
+
+    .getInvolvedhero-subtitle::after {
+        right: 0;
+    }
+
+    .getInvolvedhero-description {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border-left: 4px solid #4fc3f7;
+        animation: fadeIn 1s ease-out 0.6s both;
+    }
     .engagement-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -4,22 +4,20 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero">
+<section class="indexhero">
     <div class="container">
         <h1>Prosperity360</h1>
-        <div class="hero-subtitle">Transforming Lives, Systems, and Economies</div>
-        <p class="hero-description">
+        <div class="indexhero-subtitle">Transforming Lives, Systems, and Economies</div>
+        <p class="indexhero-description">
             A Pan-African, Global South–rooted development institution accelerating multi-dimensional prosperity,
             systems transformation, and community-driven development across Africa, Latin America, South Asia,
             and other emerging regions.
         </p>
-        <div class="hero-cta">
+        <div class="indexhero-cta">
             <a href="{{ url_for('get_involved') }}" class="btn">Join Our Movement</a>
             <a href="{{ url_for('programs') }}" class="btn btn-secondary">Our Programs</a>
         </div>
-    </div>
 </section>
-
 <!-- Mission Section -->
 <section class="section">
     <div class="container">
@@ -168,6 +166,233 @@
 
 {% block head %}
 <style>
- 
+    .indexhero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+        margin: 4rem 0 0 0;
+        padding: 5rem 2rem;
+
+    }
+
+    .indexhero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        animation: zoomIn 20s infinite alternate;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+            url("/static/images/background.jpg") center/cover no-repeat;
+    }
+
+    .indexhero .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+    }
+
+    .indexhero h1 {
+        font-size: 4.2rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: white;
+        animation: slideInDown 1s ease-out;
+    }
+
+
+    .indexhero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        position: relative;
+        display: inline-block;
+        padding: 0 2rem;
+        animation: slideInUp 1s ease-out 0.3s both;
+    }
+
+    .indexhero-subtitle::before,
+    .indexhero-subtitle::after {
+        content: "✦";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: #4fc3f7;
+    }
+
+    .indexhero-subtitle::before {
+        left: 0;
+    }
+
+    .indexhero-subtitle::after {
+        right: 0;
+    }
+
+    .indexhero-description {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border-left: 4px solid #4fc3f7;
+        animation: fadeIn 1s ease-out 0.6s both;
+    }
+
+    .indexhero-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeIn 1s ease-out 0.9s both;
+    }
+
+    .indexhero .btn {
+        padding: 1.1rem 2.2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        min-width: 180px;
+    }
+
+    .indexhero .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .indexhero .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: white;
+        color: white;
+    }
+
+    .indexhero .btn-secondary:hover {
+        background: white;
+        color: #1a5276;
+    }
+
+    @keyframes zoomIn {
+        from {
+            transform: scale(1);
+        }
+
+        to {
+            transform: scale(1.1);
+        }
+    }
+
+    @keyframes slideInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .indexhero h1 {
+            font-size: 2.8rem;
+        }
+
+        .indexhero-subtitle {
+            font-size: 1.4rem;
+        }
+
+        .indexhero-description {
+            font-size: 1rem;
+            padding: 1.5rem;
+        }
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg,
+                var(--primary-color),
+                var(--secondary-color));
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        color: white;
+    }
+
+    .btn-secondary {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: white;
+        color: var(--primary-color);
+    }
+
+    .btn-accent {
+        background: var(--accent-color);
+    }
+
+    .btn-accent:hover {
+        background: #e55a2b;
+    }
+
+    .btn-small {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+    }
 </style>
 {% endblock %}

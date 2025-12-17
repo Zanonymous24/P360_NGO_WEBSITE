@@ -5,7 +5,7 @@
 {% block content %}
 
 <!-- Page Header -->
-<section class="hero"
+<section class="abouthero"
     style="padding: 150px 0 80px; background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(40, 167, 69, 0.9));">
     <div class="container">
         <h1>About Prosperity360</h1>
@@ -317,12 +317,98 @@
         --hover-shadow: 0 8px 15px rgba(42, 110, 187, 0.1);
     }
 
+    .abouthero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+        margin: 4rem 0 0 0;
+        padding: 5rem 2rem;
+
+    }
+
+    .abouthero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        animation: zoomIn 20s infinite alternate;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+            url("/static/images/aboutus.jpg") center/cover no-repeat;
+    }
+
+    .abouthero .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+    }
+
+    .abouthero h1 {
+        font-size: 4.2rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: white;
+        animation: slideInDown 1s ease-out;
+    }
+
+
+    .abouthero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        position: relative;
+        display: inline-block;
+        padding: 0 2rem;
+        animation: slideInUp 1s ease-out 0.3s both;
+    }
+
+    .abouthero-subtitle::before,
+    .abouthero-subtitle::after {
+        content: "✦";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: #4fc3f7;
+    }
+
+    .abouthero-subtitle::before {
+        left: 0;
+    }
+
+    .abouthero-subtitle::after {
+        right: 0;
+    }
+
+    .abouthero-description {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border-left: 4px solid #4fc3f7;
+        animation: fadeIn 1s ease-out 0.6s both;
+    }
+
     /* Who We Are Section */
     .about-section {
         padding: 5rem 2rem;
         position: relative;
         overflow: hidden;
         background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+
     }
 
     .container {
@@ -571,7 +657,6 @@
     .about-image i {
         font-size: 6rem;
         background: linear-gradient(135deg, var(--primary-color, #2A6EBB), #4CAF50);
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 2rem;
         filter: drop-shadow(0 5px 15px rgba(42, 110, 187, 0.2));
@@ -780,7 +865,6 @@
         font-size: 2.25rem;
         margin-bottom: 0.5rem;
         background: linear-gradient(135deg, var(--accent-color), #4299e1);
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
@@ -1121,8 +1205,6 @@
         html {
             scroll-behavior: smooth;
         }
-
-        delay: 0.2s;
     }
 
     /* Framework Section */
