@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Prosperity360 Foundation - Transforming Lives Across Africa & Global South{% endblock %}
+    <title>{% block title %}Prosperity360 Development Initiative - Transforming Lives Across Africa & Global South{%
+        endblock %}
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -23,7 +24,7 @@
                 </div>
             </a>
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -40,9 +41,10 @@
 
             <div class="social-links">
                 <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/company/prosperity360/posts/?feedView=all" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/company/prosperity360/posts/?feedView=all" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-           
+
             </div>
 
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -62,7 +64,7 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <div class="footer-logo">
-                         <img src="/static/images/logo.png" alt="">
+                        <img src="/static/images/logo.png" alt="">
                     </div>
                     <p>Transforming Lives, Systems, and Economies Across Africa & the Global South.</p>
                     <div class="social-links">
