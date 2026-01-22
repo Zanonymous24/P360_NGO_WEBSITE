@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import os
+import json
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -23,6 +25,61 @@ def impact():
 @app.route('/getinvolved')
 def get_involved():
     return render_template('getinvolved.html')
+
+DONATIONS_FILE = "static/db/donations.json"
+VOLUNTEERS_FILE = "static/db/volunteers.json"
+
+@app.route("/submit-donation", methods=["POST"])
+def submit_donation():
+    data = request.json
+
+    if not data:
+        return jsonify({"success": False, "message": "No data received"})
+
+    data["timestamp"] = datetime.now().isoformat()
+
+    os.makedirs("static/db", exist_ok=True)
+
+    try:
+        with open(DONATIONS_FILE, "r") as f:
+            donations = json.load(f)
+    except:
+        donations = []
+
+    donations.append(data)
+
+    with open(DONATIONS_FILE, "w") as f:
+        json.dump(donations, f, indent=4)
+
+    print("New donation:", data)
+
+    return jsonify({"success": True, "message": "Thank you! Your donation request has been recorded."})
+
+@app.route("/submit-volunteer", methods=["POST"])
+def submit_volunteer():
+    data = request.json
+
+    if not data:
+        return jsonify({"success": False, "message": "No data received"})
+
+    data["timestamp"] = datetime.now().isoformat()
+
+    os.makedirs("static/db", exist_ok=True)
+
+    try:
+        with open(VOLUNTEERS_FILE, "r") as f:
+            volunteers = json.load(f)
+    except:
+        volunteers = []
+
+    volunteers.append(data)
+
+    with open(VOLUNTEERS_FILE, "w") as f:
+        json.dump(volunteers, f, indent=4)
+
+    print("New volunteer:", data)
+
+    return jsonify({"success": True, "message": "Your application has been submitted successfully!"})
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
