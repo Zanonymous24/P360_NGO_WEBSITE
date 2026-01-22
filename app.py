@@ -33,14 +33,43 @@ def contact():
         return jsonify({'success': True, 'message': 'Thank you for your message!'})
     return render_template('contact.html')
 
+NEWSLETTER_FILE = "static/db/newsletter.json"
+
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     email = request.form.get('email')
-    if email:
-        # Here you would typically save to database
-        print(f"New subscription: {email}")
-        return jsonify({'success': True, 'message': 'Thank you for subscribing!'})
-    return jsonify({'success': False, 'message': 'Please provide a valid email'})
+
+    if not email:
+        return jsonify({'success': False, 'message': 'Please provide a valid email'})
+
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(NEWSLETTER_FILE), exist_ok=True)
+
+    # Load existing emails
+    if os.path.exists(NEWSLETTER_FILE):
+        try:
+            with open(NEWSLETTER_FILE, 'r') as f:
+                emails = json.load(f)
+        except:
+            emails = []
+    else:
+        emails = []
+
+    # Prevent duplicates
+    if email in emails:
+        return jsonify({'success': False, 'message': 'This email is already subscribed!'})
+
+    # Add new email
+    emails.append(email)
+
+    # Save back to file
+    with open(NEWSLETTER_FILE, 'w') as f:
+        json.dump(emails, f, indent=4)
+
+    print(f"New subscription saved: {email}")
+
+    return jsonify({'success': True, 'message': 'Thank you for subscribing!'})
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
