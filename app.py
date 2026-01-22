@@ -81,14 +81,64 @@ def submit_volunteer():
 
     return jsonify({"success": True, "message": "Your application has been submitted successfully!"})
 
+CONTACTS_FILE = "static/db/contacts.json"
+NEWSLETTER_FILE = "static/db/newsletter.json"
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        data = request.form
-        # Here you would typically save to database or send email
-        print(f"Contact form submitted: {data}")
-        return jsonify({'success': True, 'message': 'Thank you for your message!'})
+        data = request.form.to_dict()
+
+        # Add timestamp
+        data["timestamp"] = datetime.now().isoformat()
+
+        # Checkbox handling
+        subscribe_newsletter = True if request.form.get("newsletter") else False
+        data["newsletter"] = subscribe_newsletter
+
+        # Ensure folder exists
+        os.makedirs("static/db", exist_ok=True)
+
+        # -------- Save contact message --------
+        try:
+            with open(CONTACTS_FILE, "r") as f:
+                contacts = json.load(f)
+        except:
+            contacts = []
+
+        contacts.append(data)
+
+        with open(CONTACTS_FILE, "w") as f:
+            json.dump(contacts, f, indent=4)
+
+        print("New contact message:", data)
+
+        
+        if subscribe_newsletter:
+            email = data.get("email")
+
+            if email:
+                try:
+                    with open(NEWSLETTER_FILE, "r") as f:
+                        emails = json.load(f)
+                except:
+                    emails = []
+
+                if email not in emails:
+                    emails.append(email)
+
+                    with open(NEWSLETTER_FILE, "w") as f:
+                        json.dump(emails, f, indent=4)
+
+                    print("Email auto-added to newsletter:", email)
+
+        return jsonify({
+            "success": True,
+            "message": "Thank you for contacting us! We’ll get back to you shortly."
+        })
+
     return render_template('contact.html')
+    
 
 NEWSLETTER_FILE = "static/db/newsletter.json"
 
